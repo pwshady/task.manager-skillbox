@@ -1,3 +1,38 @@
+<?php
+include ("log.php");
+include ("pass.php");
+
+if ($_SERVER['REQUEST_METHOD'] == "POST")
+{
+	if (($_POST["login"] != "") && ($_POST["password"] != ""))
+	{
+		$key = array_search($_POST["login"], $log);
+		if ($key)
+		{
+			if ($pass[$key] == $_POST["password"])
+			{
+				print "ok";
+			}
+			else
+			{
+				print "pass error";
+			}
+		}
+		else
+		{
+			print "log error";
+		};
+	}
+	else
+	{
+		print "no";
+	};
+};
+
+
+?>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -32,19 +67,23 @@
 						</ul>
 					<div style="clear: both;"></div>
 					</div>
-					<div class="index-auth">
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-							<tr>
-								<td class="iat">Ваш e-mail: <br /> <input id="login_id" size="30" name="login" /></td>
-							</tr>
-							<tr>
-								<td class="iat">Ваш пароль: <br /> <input id="login_id" size="30" name="login" /></td>
-							</tr>
-							<tr>
-								<td><input type="button" value="Войти" /></td>
-							</tr>
-						</table>
-					</div>
+					<? if(isset($_GET["login"]) && ($_GET["login"] === "yes")): ?>
+					<form action="\?login=yes" method="POST">
+						<div class="index-auth">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td class="iat">Ваш e-mail:* <br /> <input id="login_id" size="30" name="login" value="<?=htmlspecialchars($_POST["login"] ?? '')?>" required/></td>
+								</tr>
+								<tr>
+									<td class="iat">Ваш пароль:* <br /> <input id="password_id" size="30" name="password" value="<?=htmlspecialchars($_POST["password"] ?? '')?>" required/></td>
+								</tr>
+								<tr>
+									<td><input type="submit" value="Войти" /></td>
+								</tr>
+							</table>
+						</div>
+					</form>
+					<? endif; ?>
 				
 				</td>
             </tr>
@@ -54,3 +93,6 @@
 
 </body>
 </html>
+<?php
+
+print ($_SERVER['REQUEST_METHOD']);
