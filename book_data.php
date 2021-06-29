@@ -7,18 +7,22 @@ $book = [["name_book" => "BOOK1", "email_book" => $author["EMAIL1"]["email"]],
         ["name_book" => "BOOK3", "email_book" => $author["EMAIL2"]["email"]]];
 
 $result3 = ["authors" => $author, "books" => $book, ];
-var_dump($result3);
+//var_dump($result3);
 
 for ($i = 0; $i < count($book); $i++)
 {
     $author_id = $book[$i]["email_book"];
-    print "<p>Book: " . $book[$i]["name_book"] . ". Author: " . $author[$author_id]["name"] . ", born: " . $author[$author_id]["date"] . ", e-mail: " . $author[$author_id]["email"] . ".</p>";
+    //print "<p>Book: " . $book[$i]["name_book"] . ". Author: " . $author[$author_id]["name"] . ", born: " . $author[$author_id]["date"] . ", e-mail: " . $author[$author_id]["email"] . ".</p>";
 };
 shuffle($book);
 for ($i = 0; $i < count($book); $i++)
 {
     $author_id = $book[$i]["email_book"];
-    print "<p>Book: " . $book[$i]["name_book"] . ". Author: " . $author[$author_id]["name"] . ", born: " . $author[$author_id]["date"] . ", e-mail: " . $author[$author_id]["email"] . ".</p>";
+    //print "<p>Book: " . $book[$i]["name_book"] . ". Author: " . $author[$author_id]["name"] . ", born: " . $author[$author_id]["date"] . ", e-mail: " . $author[$author_id]["email"] . ".</p>";
 };
+
+$title = "Books";
+
+$red = (bool)(rand(0,1));
 
 ?>
