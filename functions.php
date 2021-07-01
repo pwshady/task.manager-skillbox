@@ -83,3 +83,14 @@ function printMenu(array $menuNames = [], array $menuLinks = [], int $items = 0,
     };
     return $result;
 };
+
+/**
+ * The function determines the partition number
+ * @param Array of partition. Default empty array.
+ * @return Partition number. -1 not found.
+ */
+
+function searchPartition(array $arrayOfPartition = []) : int
+{
+    $foundPartition = -1;
+}
