@@ -3,7 +3,7 @@
 require_once ($_SERVER["DOCUMENT_ROOT"] . "/functions.php");
 require_once ($_SERVER["DOCUMENT_ROOT"] . "/main_menu.php");
 $numberPartition = array_search($_SERVER['REQUEST_URI'], spaceMenu\arrayByKey($mainMenu, "path"));
-print $numberPartition;
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
