@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
 	};
 };
 
-include($_SERVER["DOCUMENT_ROOT"] . "/layouts/header.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/app/views/layouts/header.php");
 ?>
   <div class="header">
     	<div class="logo"><img src="i/logo.png" width="68" height="23" alt="Project" /></div>
@@ -77,9 +77,9 @@ include($_SERVER["DOCUMENT_ROOT"] . "/layouts/header.php");
             </tr>
         </table>
     
-    <div class="footer">&copy;&nbsp;<nobr>2018</nobr> Project.</div>
+
 
 
 <?php
-include($_SERVER["DOCUMENT_ROOT"] . "/layouts/headerfooter.php");
+include($_SERVER["DOCUMENT_ROOT"] . "/app/views/layouts/footer.php");
 print ($_SERVER['REQUEST_METHOD']);
