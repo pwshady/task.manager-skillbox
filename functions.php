@@ -24,23 +24,30 @@ function arrayByKey(array $workingArray = [], string $key = "0") : array
 * @param An array of links menu. Default empty array. Format: array.
 * @param Current items menu. Default - 0. Format: integer.
 * @param Style of current item menu. Css slass, defauld - no. Format: string.
+* @param Maximum length of a menu item. Default - ten symbol. Format: int.
 * @return HTML code of menu items. Format: string.
 */
-function printItems(array $menuNames = [], array $menuLinks = [], int $items = 0, string $itemsStyle = "") : string
+function printItems(array $menuNames = [], array $menuLinks = [], int $items = 0, string $itemsStyle = "", int $maxLenItem = 10) : string
 {
     $itemsCode = "";
+    $nameItem = "";
     for ($i = 0; $i < count($menuNames); $i++){
+        if (strlen($menuNames[$i]) > $maxLenItem){
+            $nameItem = substr($menuNames[$i], 0, ($maxLenItem - 3)) . "...";
+        }else{
+            $nameItem = $menuNames[$i];
+        };
         if (array_key_exists($i, $menuLinks)){
             if ($i === $items){
-                $itemsCode .= "<li " . $itemsStyle . "><a href=". $menuLinks[$i] . ">" . $menuNames[$i] . "</a></li\r\n>";
+                $itemsCode .= "<li " . $itemsStyle . "><a href=". $menuLinks[$i] . ">" . $nameItem . "</a></li\r\n>";
             }else{
-                $itemsCode .= "<li><a href=". $menuLinks[$i] . ">" . $menuNames[$i] . "</a></li\r\n>";
+                $itemsCode .= "<li><a href=". $menuLinks[$i] . ">" . $nameItem . "</a></li\r\n>";
             };
         }else{
             if ($i === $items){
-                $itemsCode .= "<li " . $itemsStyle . ">" . $menuNames[$i] . "</li\r\n>";
+                $itemsCode .= "<li " . $itemsStyle . ">" . $nameItem . "</li\r\n>";
             }else{
-                $itemsCode .= "<li>" . $menuNames[$i] . "</li\r\n>";
+                $itemsCode .= "<li>" . $nameItem . "</li\r\n>";
             };
         };
 
@@ -55,9 +62,10 @@ function printItems(array $menuNames = [], array $menuLinks = [], int $items = 0
  * @param Current item of menu. Default - 0. Format: integer.
  * @param Style of menu. "header" or "footer" default - "header". Format: string.
  * @param Style of current item menu. Css slass, defauld - no. Format: string.
+ * @param Maximum length of a menu item. Default - ten symbol. Format: int.
  * @return HTML code menu. Format: string.
  */
-function printMenu(array $menuNames = [], array $menuLinks = [], int $items = 0, string $style = "header", string $itemsStyle = "") : string
+function printMenu(array $menuNames = [], array $menuLinks = [], int $items = 0, string $style = "header", string $itemsStyle = "", int $maxLenItem = 10) : string
 {    
     $result = "";
     switch ($style){
@@ -65,7 +73,7 @@ function printMenu(array $menuNames = [], array $menuLinks = [], int $items = 0,
             {
                 $result = "<div class=\"header-menu\">\r\n";
                 $result .= "<ul>\r\n";
-                $result .= printItems($menuNames, $menuLinks, $items, $itemsStyle);
+                $result .= printItems($menuNames, $menuLinks, $items, $itemsStyle, $maxLenItem);
                 $result .= "</ul>\r\n";
                 $result .= "</div>\r\n";
                 break;
@@ -75,7 +83,7 @@ function printMenu(array $menuNames = [], array $menuLinks = [], int $items = 0,
                 $items = count($menuNames) - ($items + 1);
                 $result = "<div class=\"footer-menu\">\r\n";
                 $result .= "<ul>\r\n";
-                $result .= printItems(array_reverse($menuNames), array_reverse($menuLinks), $items, $itemsStyle);
+                $result .= printItems(array_reverse($menuNames), array_reverse($menuLinks), $items, $itemsStyle, $maxLenItem);
                 $result .= "</ul>\r\n";
                 $result .= "</div>\r\n";
                 break;

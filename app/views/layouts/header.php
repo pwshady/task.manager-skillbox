@@ -16,4 +16,4 @@ $numberPartition = array_search($_SERVER['REQUEST_URI'], spaceMenu\arrayByKey($m
 </head>
 
 <body>
-<?=spaceMenu\printMenu(spaceMenu\arrayByKey($mainMenu, "title"), spaceMenu\arrayByKey($mainMenu, "path"), $numberPartition, "header", "class=\"current-item\"")?>
+<?=spaceMenu\printMenu(spaceMenu\arrayByKey($mainMenu, "title"), spaceMenu\arrayByKey($mainMenu, "path"), $numberPartition, "header", "class=\"current-item\"", 15)?>
