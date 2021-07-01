@@ -39,3 +39,10 @@
     text-decoration: underline;
     color: green;
 }
+
+/*Picture*/
+
+.preview-picture{
+    width: 100px;
+    height: 100px;
+}

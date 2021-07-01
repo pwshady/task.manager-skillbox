@@ -38,6 +38,21 @@ include($_SERVER["DOCUMENT_ROOT"] . "/app/views/layouts/header.php");
                     var_dump($errorList);
                 };
             };
+            break;
+        };
+        case 4: //Page picture gallery
+        {
+            $dirPic = "/public/img/";
+            $pictureFiles = scandir($_SERVER["DOCUMENT_ROOT"] . $dirPic);
+            print $_SERVER["DOCUMENT_ROOT"] . "/public/img   ";
+            var_dump($pictureFiles);
+            if (count($pictureFiles) > 2){
+                for($i = 2; $i < count($pictureFiles); $i++){
+                    print "<p><img src=" . $dirPic . $pictureFiles[$i] . " alt=" . $pictureFiles[$i] . " class=\"preview-picture\">" . $pictureFiles[$i] . "<input type=\"checkbox\"></p>";
+                }
+            }else{
+                    print "<p align=\"center\">Pictures not found.</p>";
+            };
         };
     };
 
