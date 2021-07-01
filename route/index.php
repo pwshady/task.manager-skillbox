@@ -13,7 +13,10 @@ include($_SERVER["DOCUMENT_ROOT"] . "/app/views/layouts/header.php");
             var_dump($_FILES);
             include($_SERVER["DOCUMENT_ROOT"] . "/app/views/file/load-file.php");
             if (isset($_POST["upload"])){
-                if (($_FILES["picFile"]["type"] === "image/jpeg") || ($_FILES["picFile"]["type"] === "image/jpeg")|| ($_FILES["picFile"]["type"] === "image/jpeg")){
+                if (
+                    (($_FILES["picFile"]["type"] === "image/jpeg") || ($_FILES["picFile"]["type"] === "image/jpeg")|| ($_FILES["picFile"]["type"] === "image/jpeg")) &&
+                    ($_FILES["picFile"]["size"] < 4000000)
+                ){
                     print "ok";
                 }
 
