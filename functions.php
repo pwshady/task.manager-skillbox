@@ -39,15 +39,15 @@ function printItems(array $menuNames = [], array $menuLinks = [], int $items = 0
         };
         if (array_key_exists($i, $menuLinks)){
             if ($i === $items){
-                $itemsCode .= "<li " . $itemsStyle . "><a href=". $menuLinks[$i] . ">" . $nameItem . "</a></li\r\n>";
+                $itemsCode .= "<li " . $itemsStyle . "><a href=". $menuLinks[$i] . ">" . $nameItem . "</a></li>" . PHP_EOL;
             }else{
-                $itemsCode .= "<li><a href=". $menuLinks[$i] . ">" . $nameItem . "</a></li\r\n>";
+                $itemsCode .= "<li><a href=". $menuLinks[$i] . ">" . $nameItem . "</a></li>" . PHP_EOL;
             };
         }else{
             if ($i === $items){
-                $itemsCode .= "<li " . $itemsStyle . ">" . $nameItem . "</li\r\n>";
+                $itemsCode .= "<li " . $itemsStyle . ">" . $nameItem . "</li>" . PHP_EOL;
             }else{
-                $itemsCode .= "<li>" . $nameItem . "</li\r\n>";
+                $itemsCode .= "<li>" . $nameItem . "</li>" . PHP_EOL;
             };
         };
 
@@ -71,21 +71,21 @@ function printMenu(array $menuNames = [], array $menuLinks = [], int $items = 0,
     switch ($style){
         case "header":
             {
-                $result = "<div class=\"header-menu\">\r\n";
-                $result .= "<ul>\r\n";
+                $result = "<div class=\"header-menu\">" . PHP_EOL;
+                $result .= "<ul>" . PHP_EOL;
                 $result .= printItems($menuNames, $menuLinks, $items, $itemsStyle, $maxLenItem);
-                $result .= "</ul>\r\n";
-                $result .= "</div>\r\n";
+                $result .= "</ul>" . PHP_EOL;
+                $result .= "</div>" . PHP_EOL;
                 break;
             };
         case "footer":
             {
                 $items = count($menuNames) - ($items + 1);
-                $result = "<div class=\"footer-menu\">\r\n";
-                $result .= "<ul>\r\n";
+                $result = "<div class=\"footer-menu\">" . PHP_EOL;
+                $result .= "<ul>" . PHP_EOL;
                 $result .= printItems(array_reverse($menuNames), array_reverse($menuLinks), $items, $itemsStyle, $maxLenItem);
-                $result .= "</ul>\r\n";
-                $result .= "</div>\r\n";
+                $result .= "</ul>" . PHP_EOL;
+                $result .= "</div>" . PHP_EOL;
                 break;
             };
     };
